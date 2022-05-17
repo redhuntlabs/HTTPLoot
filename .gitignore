@@ -17,7 +17,8 @@
 go.work
 
 # Custom
-httploot
+httploot-*
 .colly_cache/
 result.json
 httploot-results.csv
+checksums.txt
