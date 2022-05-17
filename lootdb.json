@@ -1,0 +1,49 @@
+{
+    "Django": {
+        "issue": "Django Debug Mode Enabled Exposing Internal File Paths",
+        "severity": "high",
+        "detectors": [
+            "(?:powered by <a[^>]+>Django ?([\\d.]+)?<\\/a>|<input[^>]*name=[\"']csrfmiddlewaretoken[\"'][^>]*>)",
+            "(?s)You're seeing this error because you have <.{1,6}>DEBUG\\s=\\sTrue<\\/.{1,6}> in\\s*your Django settings file\\.",
+            "(?s)Django\\s*will display a standard 404 page\\."
+        ],
+        "validators": {
+            "status": [
+                404
+            ],
+            "regex": [
+                "(?:Django tried these URL patterns|your Django settings file|empty path didn't match any of these)"
+            ]
+        },
+        "extractors": [
+            {
+                "regex": "(?s)<li>\\s*([^\\s<]+)\\s*</li>",
+                "cgroups": "Django Internal Paths"
+            }
+        ]
+    },
+    "Laravel": {
+        "issue": "Laravel Debug Mode Enabled Exposing Secrets On Error Page",
+        "severity": "critical",
+        "detectors": [
+            "(?i)set-cookie: .*;?\\s?laravel_session="
+        ],
+        "validators": {
+            "status": [
+                500,
+                501,
+                502,
+                503
+            ],
+            "regex": [
+                "(?:Environment &[a-z]{3}. details:|DB_DATABASE|DB_PASSWORD)"
+            ]
+        },
+        "extractors": [
+            {
+                "regex": "(?s)<tr>[\\s]+<td>([^>]+?)</td>.*?<span class=\"?sf-dump-str\"? title=\"?\\d{1,3} characters\"?>(.*?)</span>",
+                "cgroups": "Laravel Environment Variables"
+            }
+        ]
+    }
+}
