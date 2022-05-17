@@ -29,7 +29,7 @@ outBreak:
 		for _, drex := range ddata.Detectors {
 			rex := regexp.MustCompile(drex)
 			if rex.MatchString(fresp) {
-				log.Println("Identified tech stack:", tech)
+				log.Printf("Identified tech stack for %s: %s", p.Host, tech)
 				p.Host = p.Host + ":::" + tech
 				break outBreak
 			}
@@ -54,32 +54,32 @@ func (p *ProcJob) ExecuteCrawler() {
 	}
 
 	var c *colly.Collector
-	if !WILDCARD_CRAWL {
+	if !wildcardCrawl {
 		c = colly.NewCollector(
 			colly.AllowedDomains(strings.Split(mainurl, "://")[1]),
 			colly.UserAgent(USERAGENT),
 			colly.ParseHTTPErrorResponse(),
-			colly.MaxDepth(CRAWL_DEPTH),
+			colly.MaxDepth(crawlDepth),
 			colly.CacheDir(".colly_cache/"),
 		)
 	} else {
 		c = colly.NewCollector(
 			colly.UserAgent(USERAGENT),
 			colly.ParseHTTPErrorResponse(),
-			colly.MaxDepth(CRAWL_DEPTH),
+			colly.MaxDepth(crawlDepth),
 			colly.CacheDir(".colly_cache/"),
 		)
 	}
 
 	c.WithTransport(&http.Transport{
 		TLSClientConfig: &tls.Config{
-			InsecureSkipVerify: !VERIFY_SSL,
+			InsecureSkipVerify: !verifySSL,
 		},
 		DisableKeepAlives: true, // we disable keep alive targets
 	})
-	c.SetRequestTimeout(time.Duration(TIMEOUT) * time.Second)
+	c.SetRequestTimeout(time.Duration(httpTimeout) * time.Second)
 	c.Limit(&colly.LimitRule{
-		Parallelism: CONCURRENT_URLS,
+		Parallelism: concurrentURLs,
 		DomainGlob:  "*",
 	})
 
@@ -109,7 +109,7 @@ func (p *ProcJob) ExecuteCrawler() {
 		go getJavascript(*r.Request.URL, &r.Body, wg)
 		if hastechs {
 			executeLoot(p.Host, r.Request.URL.String(), r.StatusCode, &r.Body)
-			if SUBMIT_FORM {
+			if submitForm {
 				buff := bytes.NewReader(r.Body)
 				root, err := html.Parse(buff)
 				if err != nil {

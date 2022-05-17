@@ -2,21 +2,22 @@
 An automated tool which can simultaneously crawl, fill forms, trigger error/debug pages and "loot" secrets out of the client-facing code of sites.
 
 ## Usage
+To use the tool, you can grab any one of the pre-built binaries from the [Releases](https://github.com/redhuntlabs/HTTPLoot/releases) section of the repository. If you want to build the source code yourself, you will need Go > 1.16 to build it. Simply running `go build` will output a usable binary for you.
+
 Video demo:
 
 [![video](https://user-images.githubusercontent.com/39941993/168653593-9551b6be-0eb7-4fa8-85ee-0de8e4506fe6.png)](https://www.youtube.com/watch?v=qc8Mm2O5t6Q)
 
 Here is the help usage of the tool:
 ```s
-$ ./httploot -h
-
+$ ./httploot --help
       _____
        )=(
       /   \     H T T P L O O T
      (  $  )                  v0.1
       \___/
 
-[+] Log4jHunt by RedHunt Labs - A Modern Attack Surface (ASM) Management Company
+[+] HTTPLoot by RedHunt Labs - A Modern Attack Surface (ASM) Management Company
 [+] Author: Pinaki Mondal (RHL Research Team)
 [+] Continuously Track Your Attack Surface using https://redhuntlabs.com/nvadr.
 
@@ -32,7 +33,7 @@ Usage of ./httploot:
   -input-file string
         Path of the input file containing domains to process
   -output-file string
-        CSV output file to write the results to (default "httploot-results.csv")
+        CSV output file path to write the results to (default "httploot-results.csv")
   -parallelism int
         Number of URLs per site to crawl parallely (default 15)
   -submit-forms
@@ -76,7 +77,7 @@ Flags like:
 Input file to read can be specified using the `-input-file` argument. You can specify a file path containing a list of URLs to scan with the tool. The `-output-file` flag can be used to specify the result output file path -- which by default goes into a file called `httploot-results.csv`.
 
 ## Further Details
-Further details about the research which led to the development of the tool can be found on our [RedHunt Labs blog](https://redhuntlabs.com/blog/the-http-facet-httploot.html).
+Further details about the research which led to the development of the tool can be found on our [RedHunt Labs Blog](https://redhuntlabs.com/blog/the-http-facet-httploot.html).
 
 ## License & Version
 The tool is licensed under the MIT license. See LICENSE.
@@ -87,3 +88,16 @@ Currently the tool is at v0.1.
 The RedHunt Labs Research Team would like to extend credits to the creators & maintainers of [shhgit](https://github.com/eth0izzle/shhgit) for the regular expressions provided by them in their repository.
 
 **[`To know more about our Attack Surface Management platform, check out NVADR.`](https://redhuntlabs.com/nvadr)**
+
+
+And here comes the initial release of the tool.
+
+Features include:
+- simultaneous crawling & scanning
+- handling wildcards
+- automatic form filling
+- triggering error/debug pages
+- extracting secrets out of frontend
+- and many more...
+
+Checkout the [README](https://github.com/redhuntlabs/HTTPLoot/blob/master/README.md) for more!

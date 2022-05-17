@@ -50,7 +50,7 @@ var (
      (  $  )                  v%s
       \___/
 
-[+] Log4jHunt by RedHunt Labs - A Modern Attack Surface (ASM) Management Company
+[+] HTTPLoot by RedHunt Labs - A Modern Attack Surface (ASM) Management Company
 [+] Author: Pinaki Mondal (RHL Research Team)
 [+] Continuously Track Your Attack Surface using https://redhuntlabs.com/nvadr.
 `

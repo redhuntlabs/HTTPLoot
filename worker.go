@@ -8,7 +8,7 @@ import (
 )
 
 var (
-	ProcChan  = make(chan *ProcJob, MAX_WORKERS)
+	ProcChan  = make(chan *ProcJob, maxWorkers)
 	writer, _ = NewCSVWriter(OUTCSV)
 )
 
@@ -17,8 +17,8 @@ type ProcJob struct {
 }
 
 func ProcessHosts(args []string) {
-	if len(INPFILE) > 0 {
-		file, err := os.Open(INPFILE)
+	if len(inpFile) > 0 {
+		file, err := os.Open(inpFile)
 		if err != nil {
 			log.Println(err)
 			return

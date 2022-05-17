@@ -49,11 +49,11 @@ func makeRequest(url string) (string, *[]byte, error) {
 	client := &http.Client{
 		Transport: &http.Transport{
 			TLSClientConfig: &tls.Config{
-				InsecureSkipVerify: !VERIFY_SSL,
+				InsecureSkipVerify: !verifySSL,
 				ServerName:         hostheader,
 			},
 		},
-		Timeout: time.Duration(TIMEOUT) * time.Second,
+		Timeout: time.Duration(httpTimeout) * time.Second,
 		/*
 			CheckRedirect: func(req *http.Request, via []*http.Request) error {
 				return http.ErrUseLastResponse
