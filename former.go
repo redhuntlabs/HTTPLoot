@@ -68,7 +68,7 @@ func randStringGen(n int) string {
 func setValues(form *url.Values) map[string]string {
 	dcombo := make(map[string]string)
 	for key := range *form {
-		dcombo[key] = randStringGen(BASEFORMLEN)
+		dcombo[key] = randStringGen(baseFormLen)
 	}
 	return dcombo
 }
