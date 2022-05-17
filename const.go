@@ -25,15 +25,10 @@ type (
 )
 
 var (
-	TIMEOUT         int
-	BASEFORMLEN     int
-	MAX_WORKERS     int
-	CONCURRENT_URLS int
-	CRAWL_DEPTH     int
-	WILDCARD_CRAWL  bool
-	SUBMIT_FORM     bool
-	VERIFY_SSL      bool
-	INPFILE         string
+	httpTimeout, baseFormLen               int
+	maxWorkers, concurrentURLs, crawlDepth int
+	wildcardCrawl, submitForm, verifySSL   bool
+	inpFile, userAgent, formString, outCsv string
 
 	dbData    map[string]DBData
 	regexData map[string]string
