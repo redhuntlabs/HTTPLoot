@@ -88,16 +88,3 @@ Currently the tool is at v0.1.
 The RedHunt Labs Research Team would like to extend credits to the creators & maintainers of [shhgit](https://github.com/eth0izzle/shhgit) for the regular expressions provided by them in their repository.
 
 **[`To know more about our Attack Surface Management platform, check out NVADR.`](https://redhuntlabs.com/nvadr)**
-
-
-And here comes the initial release of the tool.
-
-Features include:
-- simultaneous crawling & scanning
-- handling wildcards
-- automatic form filling
-- triggering error/debug pages
-- extracting secrets out of frontend
-- and many more...
-
-Checkout the [README](https://github.com/redhuntlabs/HTTPLoot/blob/master/README.md) for more!
