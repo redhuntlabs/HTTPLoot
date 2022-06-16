@@ -20,8 +20,8 @@ func findSecrets(origPath, secPath string, content *[]byte) {
 		if len(x) > 0 {
 			for _, y := range x {
 				// fmt.Print("\n")
-				// log.Printf("Secrets found -> Type: %s | Secret: %s", typerex, string(y[1]))
-				writer.Write([]string{typerex + " Exposed", origPath, secPath, string(y[1])})
+				// log.Printf("Secrets found -> Type: %s | Secret: %s", typerex, string(y[0]))
+				writer.Write([]string{typerex + " Exposed", origPath, secPath, string(y[0])})
 			}
 		}
 	}
