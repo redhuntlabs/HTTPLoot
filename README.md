@@ -4,6 +4,8 @@ An automated tool which can simultaneously crawl, fill forms, trigger error/debu
 ## Usage
 To use the tool, you can grab any one of the pre-built binaries from the [Releases](https://github.com/redhuntlabs/HTTPLoot/releases) section of the repository. If you want to build the source code yourself, you will need Go > 1.16 to build it. Simply running `go build` will output a usable binary for you.
 
+Additionally you will need two json files ([lootdb.json](https://github.com/redhuntlabs/HTTPLoot/blob/master/lootdb.json) and [regexes.json](https://github.com/redhuntlabs/HTTPLoot/blob/master/regexes.json)) alongwith the binary which you can get from the repo itself. Once you have all 3 files in the same folder, you can go ahead and fire up the tool.
+
 Video demo:
 
 [![video](https://user-images.githubusercontent.com/39941993/168653593-9551b6be-0eb7-4fa8-85ee-0de8e4506fe6.png)](https://www.youtube.com/watch?v=qc8Mm2O5t6Q)
